@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kai Lennox • Product Designer &amp; Creative Technologist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --accent: #6366f1;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .glass {
+            background: rgba(255,255,255, 0.06);
+            backdrop-filter: blur(20px);
+        }
+
+        .section-header {
+            font-size: 2.75rem;
+            line-height: 1.05;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: #6366f1;
+        }
+
+        .modal {
+            animation: modalPop 0.2s ease forwards;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .subtle-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+    <!-- NAV -->
+    <nav class="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 bg-white rounded-2xl flex items-center justify-center">
+                        <span class="text-zinc-950 font-bold text-2xl tracking-tighter">KL</span>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-xl tracking-tight">Kai Lennox</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-x-9 text-sm">
+                    <a href="#work" class="nav-link text-zinc-400 hover:text-white">Work</a>
+                    <a href="#approach" class="nav-link text-zinc-400 hover:text-white">Approach</a>
+                    <a href="#journal" class="nav-link text-zinc-400 hover:text-white">Journal</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <button onclick="document.getElementById('contact-modal').showModal()"
+                            class="hidden md:block px-5 py-2.5 text-sm font-medium border border-white/20 hover:bg-white/5 rounded-3xl transition-colors">
+                        Book a call
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn"
+                            class="md:hidden w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="max-w-screen-2xl mx-auto px-8 pt-16 pb-20">
+        <div class="max-w-4xl">
+            <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/5 border border-white/10 mb-6">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span class="text-sm text-emerald-400 font-medium">Currently open to select projects in 2026</span>
+            </div>
+            
+            <h1 class="section-header tracking-tighter max-w-5xl">
+                I design digital products<br>that feel <span class="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">thoughtful and alive</span>.
+            </h1>
+            
+            <p class="mt-6 max-w-lg text-xl text-zinc-400">
+                Product designer and creative technologist crafting interfaces that blend beauty, motion, and real human needs.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-4 mt-10">
+                <button onclick="document.getElementById('work').scrollIntoView({ behavior: 'smooth' })" 
+                        class="px-8 py-4 bg-white text-zinc-950 font-semibold rounded-3xl flex items-center gap-x-3 hover:bg-zinc-100 transition-all active:scale-[0.985]">
+                    <span>Explore my work</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                
+                <button onclick="document.getElementById('contact-modal').showModal()"
+                        class="px-8 py-4 border border-white/30 hover:bg-white/5 font-medium rounded-3xl flex items-center gap-x-3 transition-all">
+                    <span>Let's collaborate</span>
+                </button>
+            </div>
+            
+            <div class="mt-16 flex items-center gap-x-8 text-sm">
+                <div class="flex -space-x-2">
+                    <img src="https://picsum.photos/id/1005/32/32" class="w-8 h-8 rounded-full ring-2 ring-zinc-950 border border-white/20 object-cover" alt="">
+                    <img src="https://picsum.photos/id/1011/32/32" class="w-8 h-8 rounded-full ring-2 ring-zinc-950 border border-white/20 object-cover" alt="">
+                    <img src="https://picsum.photos/id/160/32/32" class="w-8 h-8 rounded-full ring-2 ring-zinc-950 border border-white/20 object-cover" alt="">
+                </div>
+                <div class="text-zinc-500 text-sm">
+                    Featured in <span class="text-white font-medium">Design Matters</span>, <span class="text-white font-medium">Figma Config</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUSTED BY -->
+    <div class="border-y border-white/10 py-8">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-x-10 gap-y-6 opacity-60">
+                <div class="font-semibold tracking-[3px] text-xs">NOTION</div>
+                <div class="font-semibold tracking-[3px] text-xs">LINEAR</div>
+                <div class="font-semibold tracking-[3px] text-xs">VERCEL</div>
+                <div class="font-semibold tracking-[3px] text-xs">ARC</div>
+                <div class="font-semibold tracking-[3px] text-xs">PERPLEXITY</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SELECTED WORK -->
+    <section id="work" class="max-w-screen-2xl mx-auto px-8 pt-20 pb-16">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <span class="text-indigo-400 text-sm font-semibold tracking-widest">SELECTED WORK</span>
+                <h2 class="section-header tracking-tighter mt-1">Things I'm proud of</h2>
+            </div>
+            <a href="#" class="hidden md:flex items-center gap-x-2 text-sm text-zinc-400 hover:text-white group">
+                View all projects 
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1 -->
+            <div onclick="showProjectModal(0)" class="project-card group cursor-pointer bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden">
+                <div class="aspect-[16/10] overflow-hidden">
+                    <img src="https://picsum.photos/id/1015/800/500" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Lumina OS interface">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-xl tracking-tight">Lumina OS</div>
+                            <div class="text-zinc-400 text-sm mt-0.5">Reimagining the desktop for deep work • 2025</div>
+                        </div>
+                        <span class="text-xs px-3 py-1 bg-white/5 rounded-2xl text-zinc-400 self-start">Product Design</span>
+                    </div>
+                    <p class="mt-4 text-sm text-zinc-400 line-clamp-2">A spatial operating system that reduces cognitive load and helps knowledge workers stay in flow longer.</p>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div onclick="showProjectModal(1)" class="project-card group cursor-pointer bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden">
+                <div class="aspect-[16/10] overflow-hidden">
+                    <img src="https://picsum.photos/id/201/800/500" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Pulse wellness interface">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-xl tracking-tight">Pulse</div>
+                            <div class="text-zinc-400 text-sm mt-0.5">Wellness platform for high performers • 2024</div>
+                        </div>
+                        <span class="text-xs px-3 py-1 bg-white/5 rounded-2xl text-zinc-400 self-start">Design Systems</span>
+                    </div>
+                    <p class="mt-4 text-sm text-zinc-400 line-clamp-2">A beautiful, data-rich wellness app that feels calm instead of clinical. Built custom design system from scratch.</p>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div onclick="showProjectModal(2)" class="project-card group cursor-pointer bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden">
+                <div class="aspect-[16/10] overflow-hidden">
+                    <img src="https://picsum.photos/id/160/800/500" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Arc Studio design system">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-xl tracking-tight">Arc Studio</div>
+                            <div class="text-zinc-400 text-sm mt-0.5">Design system for fast-moving startups • 2025</div>
+                        </div>
+                        <span class="text-xs px-3 py-1 bg-white/5 rounded-2xl text-zinc-400 self-start">Design Systems</span>
+                    </div>
+                    <p class="mt-4 text-sm text-zinc-400 line-clamp-2">A living design system and component library that helps early-stage teams ship beautiful, consistent interfaces 3× faster.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach" class="bg-zinc-900 border-y border-white/10 py-20">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="max-w-2xl">
+                <span class="text-indigo-400 text-sm font-semibold tracking-widest">MY APPROACH</span>
+                <h2 class="section-header tracking-tighter mt-2">Less pixels.<br>More feeling.</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-2xl">01</div>
+                    <h3 class="font-semibold text-xl">Understand the human</h3>
+                    <p class="text-zinc-400">I spend more time listening than designing. The best interfaces disappear because they match how people actually think and feel.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-2xl">02</div>
+                    <h3 class="font-semibold text-xl">Design with motion in mind</h3>
+                    <p class="text-zinc-400">Every interaction should feel intentional. I prototype motion early because timing and feel often matter more than static visuals.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-2xl">03</div>
+                    <h3 class="font-semibold text-xl">Build the real thing</h3>
+                    <p class="text-zinc-400">I work in code as much as Figma. This lets me push boundaries and deliver production-ready interfaces, not just pretty pictures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-20">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <span class="text-indigo-400 text-sm font-semibold tracking-widest">KIND WORDS</span>
+                <h2 class="section-header tracking-tighter mt-1">What people say</h2>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-zinc-900 border border-white/10 p-8 rounded-3xl">
+                <div class="flex gap-x-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p class="text-lg">"Kai completely transformed how our team thinks about product. The interface he designed feels like it was made specifically for us."</p>
+                <div class="mt-8 flex items-center gap-x-4">
+                    <img src="https://picsum.photos/id/1005/40/40" class="rounded-full" alt="">
+                    <div>
+                        <div class="font-medium">Maya Chen</div>
+                        <div class="text-sm text-zinc-500">Founder &amp; CEO, Lumen Health</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-zinc-900 border border-white/10 p-8 rounded-3xl">
+                <div class="flex gap-x-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-lg">"Working with Kai was the single best design decision we made last year. He shipped production code that our engineers still rave about."</p>
+                <div class="mt-8 flex items-center gap-x-4">
+                    <img src="https://picsum.photos/id/1011/40/40" class="rounded-full" alt="">
+                    <div>
+                        <div class="font-medium">David Park</div>
+                        <div class="text-sm text-zinc-500">Head of Product, Arc</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-zinc-900 border border-white/10 p-8 rounded-3xl">
+                <div class="flex gap-x-1 text-amber-400 mb-6">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-lg">"Rare combination of world-class taste and the ability to actually build. Kai elevated our entire product experience."</p>
+                <div class="mt-8 flex items-center gap-x-4">
+                    <img src="https://picsum.photos/id/160/40/40" class="rounded-full" alt="">
+                    <div>
+                        <div class="font-medium">Sofia Patel</div>
+                        <div class="text-sm text-zinc-500">Design Director, Perplexity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="max-w-screen-2xl mx-auto px-8 pb-20">
+        <div class="bg-zinc-900 border border-white/10 rounded-3xl p-12 md:p-16 text-center">
+            <h2 class="text-4xl md:text-5xl tracking-tighter font-semibold">Ready to build something<br>that actually feels different?</h2>
+            <p class="mt-4 max-w-md mx-auto text-zinc-400">I'm currently taking on a small number of meaningful projects for 2026.</p>
+            
+            <button onclick="document.getElementById('contact-modal').showModal()"
+                    class="mt-8 px-10 py-4 bg-white hover:bg-zinc-100 active:bg-zinc-200 transition text-zinc-950 font-semibold rounded-3xl inline-flex items-center gap-x-3">
+                <span>Start a conversation</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-10">
+        <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-y-4 text-sm text-zinc-500">
+            <div>© 2026 Kai Lennox. Built with intention.</div>
+            <div class="flex gap-x-6">
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">LinkedIn</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <dialog id="project-modal" class="backdrop:bg-black/70 p-0 rounded-3xl max-w-3xl w-full mx-4 border border-white/10 bg-zinc-900 text-white">
+        <div class="p-8 md:p-10">
+            <div class="flex justify-between items-start mb-6">
+                <div id="modal-header"></div>
+                <button onclick="closeProjectModal()" class="text-3xl leading-none text-zinc-500 hover:text-white">×</button>
+            </div>
+            
+            <div id="modal-content" class="prose prose-invert max-w-none text-zinc-300"></div>
+            
+            <div class="mt-8 flex gap-4">
+                <button onclick="closeProjectModal()" 
+                        class="flex-1 py-3.5 border border-white/20 rounded-3xl hover:bg-white/5 transition">Close</button>
+                <button onclick="window.open('https://example.com', '_blank')" 
+                        class="flex-1 py-3.5 bg-white text-zinc-950 font-semibold rounded-3xl hover:bg-zinc-100 transition">View live site</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- CONTACT MODAL -->
+    <dialog id="contact-modal" class="backdrop:bg-black/70 p-0 rounded-3xl max-w-md w-full mx-4 border border-white/10 bg-zinc-900">
+        <div class="p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-semibold text-2xl tracking-tight">Let's work together</h3>
+                <button onclick="document.getElementById('contact-modal').close()" class="text-3xl leading-none text-zinc-500 hover:text-white">×</button>
+            </div>
+            
+            <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="space-y-5">
+                    <div>
+                        <label class="text-sm text-zinc-400 block mb-1.5">Your name</label>
+                        <input type="text" required class="w-full bg-zinc-950 border border-white/20 focus:border-indigo-400 rounded-2xl px-5 py-3 text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="text-sm text-zinc-400 block mb-1.5">Email address</label>
+                        <input type="email" required class="w-full bg-zinc-950 border border-white/20 focus:border-indigo-400 rounded-2xl px-5 py-3 text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="text-sm text-zinc-400 block mb-1.5">What are you working on?</label>
+                        <textarea rows="4" required class="w-full bg-zinc-950 border border-white/20 focus:border-indigo-400 rounded-3xl px-5 py-4 text-sm outline-none resize-y"></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" 
+                        class="mt-6 w-full py-4 bg-white hover:bg-zinc-100 active:bg-zinc-200 transition text-zinc-950 font-semibold rounded-3xl">
+                    Send message
+                </button>
+                
+                <p class="text-center text-xs text-zinc-500 mt-4">I'll personally reply within 48 hours.</p>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#6366f1');
+        }
+        
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        mobileBtn.addEventListener('click', () => {
+            const nav = document.createElement('div');
+            nav.className = `fixed inset-0 bg-zinc-950 z-[100] p-8 flex flex-col`;
+            nav.innerHTML = `
+                <div class="flex justify-between items-center mb-12">
+                    <div class="flex items-center gap-x-3">
+                        <div class="w-9 h-9 bg-white rounded-2xl flex items-center justify-center">
+                            <span class="text-zinc-950 font-bold text-2xl tracking-tighter">KL</span>
+                        </div>
+                        <span class="font-semibold text-xl">Kai Lennox</span>
+                    </div>
+                    <button class="text-4xl text-zinc-400">×</button>
+                </div>
+                <div class="flex flex-col gap-y-6 text-2xl font-medium">
+                    <a href="#work" class="py-2">Work</a>
+                    <a href="#approach" class="py-2">Approach</a>
+                    <a href="#journal" class="py-2">Journal</a>
+                </div>
+                <div class="mt-auto pt-8">
+                    <button onclick="document.getElementById('contact-modal').showModal(); this.closest('.fixed').remove()" 
+                            class="w-full py-4 border border-white/30 rounded-3xl text-lg">Book a call</button>
+                </div>
+            `;
+            document.body.appendChild(nav);
+            
+            nav.querySelector('button').onclick = () => nav.remove();
+            nav.querySelectorAll('a').forEach(link => {
+                link.onclick = () => {
+                    nav.remove();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                };
+            });
+        });
+
+        // Project data
+        const projects = [
+            {
+                title: "Lumina OS",
+                subtitle: "Reimagining the desktop for deep work • 2025",
+                role: "Lead Product Designer & Engineer",
+                description: "Lumina is a spatial operating system designed from the ground up to reduce cognitive load. I led the entire product experience — from early research and interaction design to building the production interface in code.",
+                impact: "Users report 40% longer focus sessions and significantly lower mental fatigue. The project has been featured in multiple design publications and is currently used by teams at several top tech companies.",
+                tags: ["Product Design", "Motion", "Spatial Computing"]
+            },
+            {
+                title: "Pulse",
+                subtitle: "Wellness platform for high performers • 2024",
+                role: "Design Systems Lead",
+                description: "Pulse helps founders and executives manage energy instead of just tracking metrics. I created a complete design system and component library that made the product feel calm, premium, and deeply human.",
+                impact: "The design system reduced design-to-dev handoff time by 65%. Pulse raised a $12M Series A shortly after launch.",
+                tags: ["Design Systems", "Wellness", "Health Tech"]
+            },
+            {
+                title: "Arc Studio",
+                subtitle: "Design system for fast-moving startups • 2025",
+                role: "Founder & Principal Designer",
+                description: "Arc Studio is a living design system + component library built specifically for early-stage teams that need to ship fast without sacrificing quality or consistency.",
+                impact: "Teams using Arc report shipping beautiful interfaces 3× faster while maintaining design coherence across products.",
+                tags: ["Design Systems", "Developer Experience", "Startups"]
+            }
+        ];
+
+        let currentProjectIndex = 0;
+
+        function showProjectModal(index) {
+            currentProjectIndex = index;
+            const project = projects[index];
+            const modal = document.getElementById('project-modal');
+            const header = document.getElementById('modal-header');
+            const content = document.getElementById('modal-content');
+            
+            header.innerHTML = `
+                <div>
+                    <div class="font-semibold text-3xl tracking-tight">${project.title}</div>
+                    <div class="text-zinc-400 mt-1">${project.subtitle}</div>
+                    <div class="text-sm text-indigo-400 mt-2">${project.role}</div>
+                </div>
+            `;
+            
+            content.innerHTML = `
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="font-semibold text-sm tracking-widest text-zinc-400 mb-3">THE CHALLENGE</h4>
+                        <p class="text-zinc-300">${project.description}</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-sm tracking-widest text-zinc-400 mb-3">IMPACT</h4>
+                        <p class="text-zinc-300">${project.impact}</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-sm tracking-widest text-zinc-400 mb-3">MY ROLE</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tags.map(tag => 
+                                `<span class="px-4 py-1 text-xs bg-white/5 border border-white/10 rounded-2xl">${tag}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.showModal();
+        }
+        
+        function closeProjectModal() {
+            document.getElementById('project-modal').close();
+        }
+
+        // Contact form handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const modal = document.getElementById('contact-modal');
+            const form = e.target;
+            
+            form.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="mx-auto w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-check text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight">Thanks! I'll be in touch soon.</h3>
+                    <p class="text-zinc-400 mt-2">I personally read every message.</p>
+                    
+                    <button onclick="document.getElementById('contact-modal').close()" 
+                            class="mt-8 px-8 py-3 text-sm border border-white/20 hover:bg-white/5 rounded-3xl">
+                        Close
+                    </button>
+                </div>
+            `;
+            
+            // In a real site this would send to a backend or Formspree/etc.
+            setTimeout(() => {
+                // Could reset form here if wanted
+            }, 3000);
+        }
+
+        // Keyboard escape for modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const openModals = document.querySelectorAll('dialog[open]');
+                if (openModals.length > 0) {
+                    openModals[openModals.length - 1].close();
+                }
+            }
+        });
+
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            
+            // Optional: Add subtle scroll progress or other polish here
+            console.log('%c[Demo] Custom AI-built portfolio ready. This is fully yours to modify and host.', 'color:#666');
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>
